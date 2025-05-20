@@ -260,7 +260,7 @@ const AddBlogModal = () => {
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="px-4 py-2 text-sm font-medium rounded-md bg-gray-900 hover:bg-gray-800 text-white focus:outline-none"
                 >
                   Add Post
                 </button>

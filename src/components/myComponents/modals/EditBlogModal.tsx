@@ -276,14 +276,14 @@ const EditBlogModal: React.FC<EditBlogModalProps> = ({
           <div className="flex items-center justify-between">
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition-colors"
+              className="hover:bg-gray-800 text-white font-bold py-2 px-4 rounded bg-gray-800 focus:outline-none focus:shadow-outline transition-colors"
             >
               Save Changes
             </button>
             <button
               type="button"
               onClick={onClose}
-              className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800 transition-colors"
+              className="inline-block align-baseline font-bold text-sm text-gray-800 hover:text-gray-800 transition-colors"
             >
               Cancel
             </button>
