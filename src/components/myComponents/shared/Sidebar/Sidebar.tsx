@@ -34,15 +34,21 @@ const Sidebar = () => {
       icon: <GrProjects />,
     },
     {
+      path: `/dashboard/admin/skills`,
+      name: "Skill Management",
+      id: 4,
+      icon: <GrProjects />,
+    },
+    {
       path: `/dashboard/admin/messages`,
       name: "Message Management ",
-      id: 4,
+      id: 5,
       icon: <FiMessageSquare />,
     },
     {
       path: `/`,
       name: "Home",
-      id: 5,
+      id: 6,
       icon: <FaHome />,
     },
   ];

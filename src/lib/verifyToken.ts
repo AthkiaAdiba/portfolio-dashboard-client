@@ -31,3 +31,26 @@ export const getValidToken = async (): Promise<string> => {
 
   return token;
 };
+
+// export const getValidToken = async (): Promise<string> => {
+//   const cookieStore = await cookies();
+//   let token = cookieStore.get("accessToken")?.value;
+
+//   if (!token || (await isTokenExpired(token))) {
+//     const { data } = await getNewToken();
+//     token = data?.accessToken;
+
+//     if (token) {
+//       cookieStore?.set("accessToken", token, {
+//         httpOnly: true,
+//         secure: process.env.NODE_ENV === "production", // Better security
+//         path: "/",
+//         sameSite: "strict",
+//       });
+//     } else {
+//       throw new Error("Failed to refresh token"); // Explicit error
+//     }
+//   }
+
+//   return token || ""; // Avoid null/undefined
+// };
