@@ -43,7 +43,7 @@ const ProfilePopOver = () => {
       </PopoverTrigger>
       <PopoverContent className="bg-[#22252c] text-white w-44 text-base font-normal space-y-2">
         <p className="hover:text-[#00d7bb]">{user?.name}</p>
-        {user && (
+        {user?.role === "admin" && (
           <Link
             href="/dashboard/admin"
             className="flex items-center gap-2 hover:text-[#00d7bb]"

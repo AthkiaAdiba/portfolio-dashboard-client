@@ -7,7 +7,7 @@ const HomePage = () => {
       <div className="flex justify-end">
         <Navbar />
       </div>
-      <div className="flex items-center justify-center min-h-screen">
+      <div className="flex items-center justify-center">
         <div>
           <p className="text-5xl font-extrabold">
             Home Page of Portfolio Dashboard Application.
