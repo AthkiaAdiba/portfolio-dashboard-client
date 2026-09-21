@@ -3,7 +3,7 @@ export type TProject = {
   image: string[];
   projectDescription: string;
   features: string[];
-  technologies: string;
+  technologies: string[];
   liveLink: string;
   serverCodeLink: string;
   clientCodeLink: string;
@@ -14,7 +14,7 @@ export type TFetchedProject = {
   image: string[];
   projectDescription: string;
   features: string[];
-  technologies: string;
+  technologies: string[];
   liveLink: string;
   serverCodeLink: string;
   clientCodeLink: string;

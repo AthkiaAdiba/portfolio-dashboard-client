@@ -22,7 +22,7 @@ const EditProjectModal = ({
   handleCloseProjectUpdateModal,
 }: EditProjectModalProps) => {
   const [featureValues, setFeatureValues] = useState<string[]>(
-    editProject?.features || []
+    editProject?.features || [],
   );
   const [images, setImages] = useState<File[]>([]);
 
@@ -30,7 +30,7 @@ const EditProjectModal = ({
     name: editProject?.projectName,
     description: editProject?.projectDescription,
     features: editProject?.features?.join(". "),
-    technologies: editProject?.technologies,
+    technologies: editProject?.technologies?.join("\n") || "",
     liveLink: editProject?.liveLink,
     serverCodeLink: editProject?.serverCodeLink,
     clientCodeLink: editProject?.clientCodeLink,
@@ -47,7 +47,7 @@ const EditProjectModal = ({
         name: editProject.projectName,
         description: editProject.projectDescription,
         features: editProject.features?.join(". "),
-        technologies: editProject.technologies,
+        technologies: editProject.technologies?.join("\n") || "",
         liveLink: editProject.liveLink,
         serverCodeLink: editProject.serverCodeLink,
         clientCodeLink: editProject.clientCodeLink,
@@ -78,12 +78,12 @@ const EditProjectModal = ({
               {
                 method: "POST",
                 body: imageData,
-              }
+              },
             );
 
             const uploadedImage = await imageUploadResult.json();
             return uploadedImage.url;
-          })
+          }),
         );
       }
 
@@ -94,7 +94,10 @@ const EditProjectModal = ({
           image: uploadedImages,
           projectDescription: formData.description,
           features: featureValues,
-          technologies: formData.technologies,
+          technologies: formData.technologies
+            .split("\n")
+            .map((value: string) => value.trim())
+            .filter(Boolean),
           liveLink: formData.liveLink,
           serverCodeLink: formData.serverCodeLink,
           clientCodeLink: formData.clientCodeLink,
@@ -256,10 +259,11 @@ const EditProjectModal = ({
                 Description:
               </Label>
               <Textarea
-                rows={6}
-                placeholder="Write Project description"
-                className="dark:bg-gray-700 dark:text-gray-300"
-                {...register("description")}
+                id="technologies"
+                placeholder="Enter one technology per line"
+                rows={5}
+                className="col-span-3 dark:bg-gray-700 dark:text-gray-300"
+                {...register("technologies")}
               />
             </div>
 

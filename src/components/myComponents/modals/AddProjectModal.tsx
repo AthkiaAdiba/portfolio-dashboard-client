@@ -12,6 +12,7 @@ import { createProject } from "@/services/ProjectService";
 const AddProjectModal = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [featureValues, setFeatureValues] = useState<string[]>([]);
+  const [technologyValues, setTechnologyValues] = useState<string[]>([]);
   const [images, setImages] = useState<File[]>([]);
   const {
     register,
@@ -46,12 +47,12 @@ const AddProjectModal = () => {
           {
             method: "POST",
             body: imageData,
-          }
+          },
         );
 
         const uploadedImage = await imageUploadResult.json();
         return uploadedImage.url;
-      })
+      }),
     );
 
     // Prepare data for the backend
@@ -60,7 +61,7 @@ const AddProjectModal = () => {
       image: uploadedImages,
       projectDescription: formData.description,
       features: featureValues,
-      technologies: formData.technologies,
+      technologies: technologyValues,
       liveLink: formData.liveLink,
       serverCodeLink: formData.serverCodeLink,
       clientCodeLink: formData.clientCodeLink,
@@ -76,6 +77,7 @@ const AddProjectModal = () => {
         reset();
         setImages([]);
         setFeatureValues([]);
+        setTechnologyValues([]);
         setIsOpen(false);
       }
     } catch (err: any) {
@@ -201,11 +203,19 @@ const AddProjectModal = () => {
                   </Label>
                   <Textarea
                     id="technologies"
-                    placeholder="Enter technologies"
-                    rows={2}
+                    placeholder="Enter one technology per line"
+                    rows={5}
                     className="col-span-3 dark:bg-gray-700 dark:text-gray-300"
                     {...register("technologies", {
-                      required: true,
+                      required: "Technologies are required!",
+                      onChange: (event) => {
+                        const values = event.target.value
+                          .split("\n")
+                          .map((value: string) => value.trim())
+                          .filter(Boolean);
+
+                        setTechnologyValues(values);
+                      },
                     })}
                   />
                   {errors.technologies && (
